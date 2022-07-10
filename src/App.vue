@@ -1,18 +1,38 @@
 <template>
-  <nav>
+  <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  </nav> -->
+  <UserDashboard/>
+  <!-- <router-view/> -->
 </template>
 
+<script>
+import UserDashboard from '@/views/UserDashboard.vue'
+export default {
+  name: 'App',
+  components: {
+    UserDashboard
+  }
+  
+}
+</script>
+
 <style lang="scss">
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Rubik', Helvetica, Arial, sans-serif;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background-color: $very-dark-blue;
+  color: $white;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 nav {
