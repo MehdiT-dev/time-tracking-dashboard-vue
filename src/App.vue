@@ -1,10 +1,5 @@
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav> -->
   <UserDashboard/>
-  <!-- <router-view/> -->
 </template>
 
 <script>
@@ -32,7 +27,7 @@ export default {
   background-color: $very-dark-blue;
   color: $white;
   min-height: 100vh;
-  padding: 20px;
+  padding: 20px 20px 0;
 }
 
 nav {

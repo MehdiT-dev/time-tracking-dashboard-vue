@@ -2,7 +2,7 @@
     <article class="user-card">
         <div class="user-card-content">
             <p class="user-picture">
-                <img src="@/../images/image-jeremy.png" alt="">
+                <img src="../assets/images/image-jeremy.png" alt="">
             </p>
             <div class="user-info">
                 <p>Report for</p>
@@ -11,9 +11,9 @@
         </div>
         <div class="period-display">
             <ul>
-                <li><a href="">Daily</a></li>
-                <li><a href="">Weekly</a></li>
-                <li><a href="">Monthly</a></li>
+                <li @click="$emit('changeToDaily', 'period')" class="active">Daily</li>
+                <li @click="$emit('changeToWeekly', 'period')">Weekly</li>
+                <li @click="$emit('changeToMonthly', 'period')">Monthly</li>
             </ul>
         </div>
     </article>
@@ -22,6 +22,7 @@
 <script>
 export default {
     name: 'CategoryCard',
+    props: ['period'],
 }
 </script>
 
@@ -36,9 +37,9 @@ export default {
     .user-card-content {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         background: $blue;
         border-radius: 15px;
+        height: 130px;
         width: 100%;
         padding: 30px;
 
@@ -46,6 +47,7 @@ export default {
             &.user-picture {
                 width: 70px;
                 height: 70px;
+                margin-right: 15px;
 
                 img {
                     width: 100%;
@@ -64,22 +66,75 @@ export default {
         }
     }
     .period-display {
-        padding: 30px 0;
+        height: 70px;
 
         ul {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
 
             li {
                 flex-basis: 33%;
                 text-align: center;
                 display: inline-block;
                 list-style-type: none;
+                cursor: pointer;
+                color: $desaturated-blue;
+                font-weight: 400;
+                font-size: 1.1em;
 
-                a {
+                &.active,
+                &:hover {
                     color: $white;
-                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    @include respond (medium) {
+        height: 210px;
+
+            .user-card-content {
+                p.user-picture {
+                    height: 80px;
+                    width: 80px;
+                }
+                .user-info {
+                    h2 {
+                        font-size: 2.5em;
+                    }
+                }
+            }
+    }
+
+    @include respond (large) {
+        height: 100%;
+
+        .user-card-content {
+            height: 350px;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 35px 30px 75px;
+
+            p.user-picture {
+                height: 85px;
+                width: 85px;
+            }
+        }
+        .period-display {
+            height: calc(100% - 350px);
+            padding: 30px 30px 10px;
+
+            ul {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-around;
+                height: 100%;
+
+                li {
+                    flex-basis: 100%;
                 }
             }
         }
